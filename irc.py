@@ -50,6 +50,7 @@ class ShetBotProtocol(IRCClient):
 		
 		# This bot can be controlled over SHET
 		self.shet.add_action(self.bot_path + "say", self.shet_say)
+		self.shet.add_action(self.bot_path + "say_to", self.shet_say_to)
 		self.shet.add_action(self.bot_path + "describe", self.shet_describe)
 		self.shet.add_action(self.bot_path + "pm", self.shet_pm)
 		
@@ -64,8 +65,8 @@ class ShetBotProtocol(IRCClient):
 			self.user_events[user] = user_events
 			
 			# Ways to contact the user (via the bot)
-			self.shet.add_action(path + "say_to", self.get_say_to_fn(user))
-			self.shet.add_action(path + "pm_to", self.get_pm_to_fn(user))
+			self.shet.add_action(path + "bot_say_to", self.get_say_to_fn(user))
+			self.shet.add_action(path + "bot_pm_to", self.get_pm_to_fn(user))
 			
 			# User's channel events
 			user_events["on_join"] = self.shet.add_event(path + "on_join")
@@ -87,6 +88,11 @@ class ShetBotProtocol(IRCClient):
 	def shet_say(self, msg):
 		self.privmsg(self.nickname, self.chan, msg)
 		self.say(self.chan, str(msg), 100)
+	
+	
+	def shet_say_to(self, user, msg):
+		self.shet_say("%s: %s"%(user, msg))
+	
 	
 	def shet_describe(self, msg):
 		self.privmsg(self.nickname, self.chan, msg, action = True)
@@ -172,7 +178,7 @@ class ShetBotProtocol(IRCClient):
 		Create a function which sends an addressed message to the given user.
 		"""
 		def say_to(msg):
-			self.shet_say("%s: %s"%(user, msg))
+			self.shet_say_to(user, msg)
 		
 		return say_to
 	
