@@ -51,9 +51,9 @@ class ShetBotProtocol(IRCClient):
 		# This bot can be controlled over SHET
 		self.shet.add_action(self.bot_path + "say", self.shet_say)
 		self.shet.add_action(self.bot_path + "say_to", self.shet_say_to)
-		self.shet.add_action(self.bot_path + "describe", self.shet_describe)
+		self.shet.add_action(self.bot_path + "action", self.shet_describe)
 		self.shet.add_action(self.bot_path + "pm", self.shet_pm)
-		self.shet.add_action(self.bot_path + "pm_describe", self.shet_pm_describe)
+		self.shet.add_action(self.bot_path + "pm_action", self.shet_pm_describe)
 		
 		# Can listen to bot's PMs
 		self.on_bot_pm = self.shet.add_event(self.bot_path + "on_pm")
