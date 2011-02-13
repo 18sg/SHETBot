@@ -83,7 +83,7 @@ class ShetBotProtocol(IRCClient):
 			user_events["on_mention_bot"] = self.shet.add_event(path + "on_mention_bot")
 			user_events["on_address_bot"] = self.shet.add_event(path + "on_address_bot")
 			user_events["on_pm_bot"] = self.shet.add_event(path + "on_pm_bot")
-			user_events["on_pm_bot_action"] = self.shet.add_event(path + "on_pm_bot_action")
+			user_events["on_pm_action_bot"] = self.shet.add_event(path + "on_pm_action_bot")
 	
 	
 	def shet_say(self, msg):
