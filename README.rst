@@ -56,6 +56,9 @@ User interactions with the bot
 IRC Bot Specific Stuff -- ``/irc/bot/``
 ---------------------------------------
 
+In addition to the things users have in their directories, the bot also has the
+follwing:
+
 * Action: ``say(message)`` -- Send a message to the channel
 * Action: ``say_to(nick, message)`` -- Send an addressed message to nick the channel
 * Action: ``action(message)`` -- Send a /me message to the channel
