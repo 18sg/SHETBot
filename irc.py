@@ -15,6 +15,7 @@ class ShetBotProtocol(IRCClient):
 	# SHET Paths for users who will be added to the SHET tree
 	user_paths = {
 		"ShetBot"     : "/irc/bot/",
+		"shelf"       : "/shelf/irc/",
 		"J616S"       : "/james/irc/",
 		"jonathan"    : "/jonathan/irc/",
 		"karl"        : "/karl/irc/",
